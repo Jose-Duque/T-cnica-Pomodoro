@@ -3,6 +3,12 @@ import { useInterval } from '../hooks/use-interval';
 import { Button } from './button';
 import { Timer } from './timer';
 
+const pim = require('../sounds/pim.mp3');
+const pip = require('../sounds/pip.mp3');
+
+const audioStartWorking = new Audio(pim);
+const audioStopWorking = new Audio(pip);
+
 interface Props {
   pomodoroTime: number;
   shortResetTime: number;
@@ -30,6 +36,7 @@ export function PomodoroTime(props: Props) {
     setWorking(true);
     setResting(false);
     setMainTime(props.pomodoroTime);
+    audioStartWorking.play();
   }
 
   const configResting = (long: boolean) => {
@@ -42,6 +49,8 @@ export function PomodoroTime(props: Props) {
     } else {
       setMainTime(props.shortResetTime);
     }
+
+    audioStopWorking.play();
   }
 
 return (
@@ -51,7 +60,7 @@ return (
     <div>
       <Button text="Work" onClick={() => configWorking()}></Button>
       <Button className={!working && !resting ? 'hidden': ''} text={timeCounting ? 'Pause' : 'Play'} onClick={() => setTimeCounting(!timeCounting)}></Button>
-      <Button  text="Rest" onClick={() => configResting(false)}></Button>
+      <Button  text="Reset" onClick={() => configResting(false)}></Button>
     </div>
     <div>
       <p>sdfhsfhshf</p>
