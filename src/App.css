@@ -5,6 +5,7 @@ body {
 }
 
 .App {
+  max-width: 630px;
   text-align: center;
   font-family: sans-serif;
   background: #fff;
