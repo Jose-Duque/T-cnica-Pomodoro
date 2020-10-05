@@ -7,9 +7,9 @@ function App() {
   return (
     <div className="App">
       <PomodoroTime 
-       pomodoroTime={1500}
-       shortResetTime={300}
-       longResetTime={0}
+       pomodoroTime={10}
+       shortResetTime={3}
+       longResetTime={9}
        cycles={4} 
       />
     </div>
